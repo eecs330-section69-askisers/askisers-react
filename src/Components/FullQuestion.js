@@ -19,13 +19,13 @@ class FullQuestion extends Component {
               <CardHeader id="cardHeader"
                           avatar={<Avatar rounded> <QuestionAnswer></QuestionAnswer> </Avatar>}
                           action={<IconButton><ArrowUpward></ArrowUpward></IconButton>}  
-                          title="What is the Pythagorean Theorem?" 
+                          title="question_title" 
                           subheader="num_upvotes">
                 
               </CardHeader>
               <CardContent>
                 <Typography id="questionText" component="p">
-                  And how can I use it to create an AI in HTML??
+                  question_body
                 </Typography> 
               </CardContent>
             </Card>;
