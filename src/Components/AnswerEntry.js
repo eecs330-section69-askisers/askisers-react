@@ -1,35 +1,39 @@
 import React, { Component } from "react";
-import "../FullQuestion.css";
+import "../AnswerEntry.css"
 
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
+import TextField from '@material-ui/core/TextField';
 
 import { IconButton } from "@material-ui/core";
 
-class FullQuestion extends Component {
-  
+class AnswerEntry extends Component {
   render() {
-    return <Card>
+    return  <Card>
               <CardHeader id="cardHeader"
                           avatar={<Avatar rounded> <QuestionAnswer></QuestionAnswer> </Avatar>}
-                          action={<IconButton><ArrowUpward></ArrowUpward></IconButton>}  
-                          title="question_title" 
                           subheader="num_upvotes">
-                
+      
               </CardHeader>
               <CardContent>
-                <Typography id="questionText" component="p">
-                  question_body
-                </Typography> 
+                <TextField  id="answer-entry"
+                            label="Enter your answer"
+                            placeholder="Enter your answer"
+                            margin="normal"></TextField>
               </CardContent>
+              <CardActions disableActionSpacing>
+                <IconButton><ArrowDownward></ArrowDownward></IconButton>
+                <IconButton><ArrowUpward></ArrowUpward></IconButton>
+              </CardActions>
             </Card>;
   }
 }
 
-export default FullQuestion;
+export default AnswerEntry;

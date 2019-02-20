@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Answer from "./Components/Answer";
+import AnswerEntry from "./Components/AnswerEntry";
+import "./SideBar.css";
+import SideBar from "./Components/SideBar";
 
 class App extends Component {
   render() {
@@ -10,7 +12,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Edit <code>src/App.js</code> and press alt f4 to save changes :).
           </p>
           <a
             className="App-link"
@@ -20,7 +22,8 @@ class App extends Component {
           >
             Yay
           </a>
-          <Answer />
+          <AnswerEntry/>
+          <SideBar/>
         </header>
       </div>
     );
