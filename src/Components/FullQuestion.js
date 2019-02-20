@@ -12,7 +12,7 @@ const theme = createMuiTheme({
 
 
 class FullQuestion extends Component {
-  render() { // just kill me already
+  render() {
     return <div id="fullQuestion">
               <div> 
                 <h4 id="questionTitle">
