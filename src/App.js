@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import QuestionPreview from "./Components/QuestionPreview";
+import Answer from "./Components/Answer";
 
 class App extends Component {
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
           >
             Yay
           </a>
-          <QuestionPreview />
+          <Answer />
         </header>
       </div>
     );
