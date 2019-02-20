@@ -1,42 +1,8 @@
-#fullQuestion{
-  margin: 10px;
-
-  border-radius: 30px;
-  border: 2px solid #ffffff;
-
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-#questionTitle {
-   text-align: left; 
-
-   margin-top: -2px;
-   margin-left: -15px;
-   margin-right: -15px;
-   margin-bottom: -10px;
-   
-   border-radius: 25px;
-   border: 2px solid #ffffff;
-   
-   padding: 10px;
-   
-}
-
-#questionBody {
-    text-align: left; 
- }
-
- #upVote {
-    margin-right: 10px;
-    margin-bottom: 5px;
- }
-
- #cardHeader {
+#cardHeader {
    text-align: left;
    color: #4422ff; 
  }
 
- #questionText {
+#questionText {
    text-align: left;
  }
