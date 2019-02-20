@@ -20,7 +20,7 @@ class App extends Component {
           >
             Yay
           </a>
-          <QuestionPreview />
+          <QuestionPreview/>
         </header>
       </div>
     );
