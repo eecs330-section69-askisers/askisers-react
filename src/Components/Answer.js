@@ -1,22 +1,37 @@
 import React, { Component } from "react";
 import "../Answer.css"
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import white from '@material-ui/core/colors/white';
-import blue from '@material-ui/core/colors/blue';
 
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: white,
-    secondary: blue
-  }
-});
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+
 
 
 class Answer extends Component {
   render() {
-    return <div id='Answer'><div id='AnswerTitle'>Type an answer below</div><br/><TextField></TextField></div>;
+    return <Card>
+              <CardHeader id="cardHeader"
+                          avatar={<Avatar rounded> <QuestionAnswer></QuestionAnswer> </Avatar>}
+                          subheader="num_upvotes">
+              </CardHeader>
+              <CardContent>
+                <Typography id="answerText" component="p">
+                  answer_body
+                </Typography> 
+              </CardContent>
+              <CardActions disableActionSpacing>
+                <IconButton><ArrowDownward></ArrowDownward></IconButton>
+                <IconButton><ArrowUpward></ArrowUpward></IconButton>
+              </CardActions>
+            </Card>;
   }
 }
 
