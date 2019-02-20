@@ -31,3 +31,12 @@
     margin-right: 10px;
     margin-bottom: 5px;
  }
+
+ #cardHeader {
+   text-align: left;
+   color: #4422ff; 
+ }
+
+ #questionText {
+   text-align: left;
+ }
