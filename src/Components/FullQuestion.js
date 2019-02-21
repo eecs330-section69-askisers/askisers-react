@@ -12,7 +12,22 @@ import Avatar from "@material-ui/core/Avatar";
 
 import { IconButton } from "@material-ui/core";
 
+import Answer from "./Answer";
+import AnswerEntry from "./AnswerEntry";
+
 class FullQuestion extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editAnswer: false
+    };
+    this.editAnswer = this.editAnswer.bind(this);
+  }
+
+  editAnswer() {
+    console.log("Edit the answer!");
+  }
+
   render() {
     return (
       <Card>
@@ -29,12 +44,14 @@ class FullQuestion extends Component {
               <ArrowUpward />
             </IconButton>
           }
-          title="question_title"
-          subheader="num_upvotes"
+          title="How do you perform the Pythagorean Theorem? What does it do?"
+          subheader="13 upvotes"
         />
         <CardContent>
           <Typography id="questionText" component="p">
-            question_body
+            I have no idea what the pythagorean theorem is pls help I am
+            panicking the math exam is tomorrow and I do not understand it at
+            all
           </Typography>
         </CardContent>
       </Card>
