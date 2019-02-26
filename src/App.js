@@ -7,154 +7,77 @@ import "./SideBar.css";
 import FullQuestion from "./Components/FullQuestion";
 import Answer from "./Components/Answer";
 import AnswerEntry from "./Components/AnswerEntry";
+import Button from "@material-ui/core/Button";
+
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import QuestionPreview from "./Components/QuestionPreview";
+import { questionInfo } from "./Components/QuestionData";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      previewQuestion: false
+      previewQuestion: false,
+      questions: questionInfo
     };
     this.viewQuestion = this.viewQuestion.bind(this);
   }
 
   viewQuestion() {
     this.setState({
-      // Toggle question preview on and off
-      previewQuestion: !this.state.previewQuestion
+      previewQuestion: !this.state.previewQuestion,
+      questions: this.state.questions
     });
   }
 
-  render() {
-    const previewQuestion = this.state.previewQuestion;
-    let displayQuestion;
+  generateQuestions = () => {
+    const questionArr = this.state.questions;
+    let sidebar = [];
 
-    if (previewQuestion) {
-      displayQuestion = (
-        <div className="Question-Wrapper">
-          <FullQuestion />
-          <br />
-          <Answer />
-        </div>
-      );
-    } else {
-      displayQuestion = <div />;
-    }
-
-    return (
-      <div>
-        <div className="Sidebar-Wrapper">
-          <div id="sidebarsteve">
-            <div className="topnav">
-              <input type="text" placeholder="Find a question or topic.." />
-              <IconButton>
-                <Search />
+    // Outer loop to create parent
+    for (let i = 0; i < questionArr.length; i++) {
+      //Create the parent and add the children
+      sidebar.push(
+        <div className="question">
+          <div className="row">
+            <div className="columnA">
+              <IconButton className="upvote">
+                <Add />
               </IconButton>
+              <br />
+              <p>13</p>
             </div>
-            <br />
-            <button className="button">Create a new post!</button>
-            <br />
-            <br />
-            <div id="question-title">Questions</div>
-            <br />
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>13</p>
-                </div>
-                <div className="columnB" onClick={this.viewQuestion}>
-                  How do you perform the Pythagorean Theorem? What does it do?
-                </div>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>10</p>
-                </div>
-                <div className="columnB">
-                  What do I need to learn how to add?
-                </div>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>7</p>
-                </div>
-                <div className="columnB">
-                  If I have an isosceles triangle, what do I do with my other
-                  triangles?
-                </div>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>5</p>
-                </div>
-                <div className="columnB">
-                  Can someone please explain long division?
-                </div>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>2</p>
-                </div>
-                <div className="columnB">How do I carry a zero?</div>
-              </div>
-            </div>
-            <br />
-            <br />
-            <div className="question">
-              <div className="row">
-                <div className="columnA">
-                  <IconButton className="upvote">
-                    <Add />
-                  </IconButton>
-                  <br />
-                  <p>0</p>
-                </div>
-                <div className="columnB">
-                  Is there any other way for me to find the integral between two
-                  points on a parametric equation?
-                </div>
-              </div>
+            <div className="columnB" onClick={this.viewQuestion}>
+              {questionArr[i]}
             </div>
           </div>
         </div>
-        {displayQuestion}
+      );
+    }
+    return sidebar;
+  };
+
+  render() {
+    const previewQuestion = this.state.previewQuestion;
+    const questionArr = this.state.questions;
+
+    console.log("ARRAY: " + questionArr);
+
+    return (
+      <div>
+        <div id="sidebarsteve" className="Sidebar-Wrapper">
+          <div className="topnav">
+            <input type="text" placeholder="Find a question or topic.." />
+            <IconButton>
+              <Search />
+            </IconButton>
+          </div>
+          {this.generateQuestions()}
+        </div>
+        <div>
+          <QuestionPreview />
+        </div>
       </div>
     );
   }
