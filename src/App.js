@@ -3,53 +3,77 @@ import { IconButton } from "@material-ui/core";
 import { Search, Add } from "@material-ui/icons";
 import "./App.css";
 import "./SideBar.css";
-// import SideBar from "./Components/SideBar";
-import FullQuestion from "./Components/FullQuestion";
-import Answer from "./Components/Answer";
-import AnswerEntry from "./Components/AnswerEntry";
+import QuestionPreview from "./Components/QuestionPreview";
+import questionInfo from "./Components/QuestionData.json";
 import Button from "@material-ui/core/Button";
 
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import QuestionPreview from "./Components/QuestionPreview";
-import { questionInfo } from "./Components/QuestionData";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       previewQuestion: false,
-      questions: questionInfo
+      activeQuestion:
+        "You haven't selected a post yet! Click on anything on the sidebar to view it.",
+      questions: questionInfo,
+      // State of whether the answer question modal is open or not
+      addQuestion: false
     };
-    this.viewQuestion = this.viewQuestion.bind(this);
   }
 
-  viewQuestion() {
+  handleOpen = () => {
+    this.setState({ addQuestion: true });
+  };
+
+  handleClose = () => {
+    let newQ = [
+      {
+        question: this.state.newQuestion,
+        upvotes: 0
+      }
+    ];
     this.setState({
-      previewQuestion: !this.state.previewQuestion,
-      questions: this.state.questions
+      questions: this.state.questions.concat(newQ),
+      addQuestion: false
     });
-  }
+    console.log("New set of questions: " + this.state.questions);
+  };
 
+  setNewQuestion = e => {
+    this.setState({
+      newQuestion: e.target.value
+    });
+    console.log("new value of state: " + this.state.newQuestion);
+  };
+
+  // Generates all of the question previews from the array
+  // of questions in the state
   generateQuestions = () => {
     const questionArr = this.state.questions;
     let sidebar = [];
 
     // Outer loop to create parent
     for (let i = 0; i < questionArr.length; i++) {
+      let currQuestion = questionArr[i];
       //Create the parent and add the children
       sidebar.push(
-        <div className="question">
+        <div className="question" onClick={this.viewQuestion}>
           <div className="row">
             <div className="columnA">
               <IconButton className="upvote">
                 <Add />
               </IconButton>
               <br />
-              <p>13</p>
+              <p>{currQuestion["upvotes"]}</p>
             </div>
-            <div className="columnB" onClick={this.viewQuestion}>
-              {questionArr[i]}
+            <div id="main-question" className="columnB">
+              {currQuestion["question"]}
             </div>
           </div>
         </div>
@@ -58,14 +82,56 @@ class App extends Component {
     return sidebar;
   };
 
-  render() {
-    const previewQuestion = this.state.previewQuestion;
-    const questionArr = this.state.questions;
+  viewQuestion = e => {
+    let question = e.target.textContent;
+    this.setState({
+      previewQuestion: !this.state.previewQuestion,
+      activeQuestion: question
+    });
+  };
 
-    console.log("ARRAY: " + questionArr);
+  render() {
+    const { fullScreen } = this.props;
 
     return (
       <div>
+        <Dialog
+          fullScreen={fullScreen}
+          open={this.state.addQuestion}
+          onClose={this.handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">
+            {"Create a new post"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              <TextField
+                onChange={this.setNewQuestion}
+                id="standard-full-width"
+                label="Enter your question below:"
+                style={{ margin: 8, width: 500 }}
+                placeholder="Placeholder"
+                helperText=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{" "}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={this.handleClose}
+              variant="contained"
+              color="primary"
+            >
+              Done
+            </Button>
+          </DialogActions>
+        </Dialog>
+
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
             <input type="text" placeholder="Find a question or topic.." />
@@ -73,10 +139,21 @@ class App extends Component {
               <Search />
             </IconButton>
           </div>
+          <br />
+          <center>
+            <Button
+              onClick={this.handleOpen}
+              variant="contained"
+              color="primary"
+            >
+              Create a new post
+            </Button>
+          </center>
+          <br />
           {this.generateQuestions()}
         </div>
         <div>
-          <QuestionPreview />
+          <QuestionPreview question={this.state.activeQuestion} />
         </div>
       </div>
     );

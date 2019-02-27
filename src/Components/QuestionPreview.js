@@ -12,6 +12,7 @@ import { IconButton } from "@material-ui/core";
 
 class QuestionPreview extends Component {
   render() {
+    console.log("Question: " + this.props.question);
     return (
       <Card>
         <CardHeader
@@ -27,8 +28,8 @@ class QuestionPreview extends Component {
               <ArrowUpward />
             </IconButton>
           }
-          title="question_title"
-          subheader="num_upvotes"
+          title={this.props.question}
+          subheader={0}
         />
       </Card>
     );
