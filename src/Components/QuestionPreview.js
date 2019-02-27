@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../QuestionPreview.css";
 
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import QuestionAnswer from "@material-ui/icons/QuestionAnswer";
 
 import Card from "@material-ui/core/Card";

@@ -19,11 +19,11 @@ class App extends Component {
     super(props);
     this.state = {
       previewQuestion: false,
+      questions: questionInfo,
       activeQuestion:
         "You haven't selected a post yet! Click on one in the sidebar to view it.",
       activeDesc:
-        "By the way, you look absolutely lovely today!",
-      questions: questionInfo,
+        "By the way, you look great today!",
       // State of whether the answer question modal is open or not
       addQuestion: false
     };
@@ -73,7 +73,7 @@ class App extends Component {
       let currQuestion = questionArr[i];
       //Create the parent and add the children
       sidebar.push(
-        <div className="question">
+        <div className="question" key={i} onClick={this.viewQuestion}>
           <div className="row">
             <div className="columnA">
               <IconButton className="upvote">
@@ -82,7 +82,7 @@ class App extends Component {
               <br />
               <p>{currQuestion["upvotes"]}</p>
             </div>
-            <div id="main-question" className="columnB" onClick={this.viewQuestion}>
+            <div id="main-question" className="columnB">
               {currQuestion["question"]}
             </div>
           </div>
@@ -93,11 +93,12 @@ class App extends Component {
   };
 
   viewQuestion = e => {
-    let question = e.target.textContent;
+    let currKey = e.target.key;
+    console.log("currkey " + currKey);
     this.setState({
       previewQuestion: !this.state.previewQuestion,
-      activeQuestion: question,
-      activeDesc: "Actually fuck you I'm literally an asshole"
+      activeQuestion: this.state.questions[currKey]["question"],
+      activeDesc: this.state.questions[currKey]["desc"]
     });
   };
 
