@@ -7,8 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 
-import { IconButton, CardContent, Typography } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
+import { CardContent, Typography } from "@material-ui/core";
 
 class QuestionPreview extends Component {
   render() {
@@ -23,13 +22,8 @@ class QuestionPreview extends Component {
               <QuestionAnswer />{" "}
             </Avatar>
           }
-          action={
-            <IconButton>
-              <Add/>
-            </IconButton>
-          }
           title={this.props.question}
-          subheader={0}
+          subheader={this.props.votes}
         />
         <CardContent>
           <Typography component="p" children={this.props.desc}/>
