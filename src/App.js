@@ -20,7 +20,9 @@ class App extends Component {
     this.state = {
       previewQuestion: false,
       activeQuestion:
-        "You haven't selected a post yet! Click on anything on the sidebar to view it.",
+        "You haven't selected a post yet! Click on one in the sidebar to view it.",
+      activeDesc:
+        "By the way, you look absolutely lovely today!",
       questions: questionInfo,
       // State of whether the answer question modal is open or not
       addQuestion: false
@@ -35,6 +37,7 @@ class App extends Component {
     let newQ = [
       {
         question: this.state.newQuestion,
+        desc: this.state.newDesc,
         upvotes: 0
       }
     ];
@@ -52,6 +55,13 @@ class App extends Component {
     console.log("new value of state: " + this.state.newQuestion);
   };
 
+  setNewDesc = e => {
+    this.setState({
+      newDesc: e.target.value
+    });
+    console.log("new value of state: " + this.state.newDesc);
+  };
+
   // Generates all of the question previews from the array
   // of questions in the state
   generateQuestions = () => {
@@ -63,7 +73,7 @@ class App extends Component {
       let currQuestion = questionArr[i];
       //Create the parent and add the children
       sidebar.push(
-        <div className="question" onClick={this.viewQuestion}>
+        <div className="question">
           <div className="row">
             <div className="columnA">
               <IconButton className="upvote">
@@ -72,7 +82,7 @@ class App extends Component {
               <br />
               <p>{currQuestion["upvotes"]}</p>
             </div>
-            <div id="main-question" className="columnB">
+            <div id="main-question" className="columnB" onClick={this.viewQuestion}>
               {currQuestion["question"]}
             </div>
           </div>
@@ -86,7 +96,8 @@ class App extends Component {
     let question = e.target.textContent;
     this.setState({
       previewQuestion: !this.state.previewQuestion,
-      activeQuestion: question
+      activeQuestion: question,
+      activeDesc: "Actually fuck you I'm literally an asshole"
     });
   };
 
@@ -111,7 +122,22 @@ class App extends Component {
                 id="standard-full-width"
                 label="Enter your question below:"
                 style={{ margin: 8, width: 500 }}
-                placeholder="Placeholder"
+                placeholder=""
+                helperText=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{" "}
+            </DialogContentText>
+            <DialogContentText>
+              <TextField
+                onChange={this.setNewDesc}
+                id="standard-full-width"
+                label="Enter a detailed description below:"
+                style={{ margin: 8, width: 500 }}
+                placeholder=""
                 helperText=""
                 fullWidth
                 margin="normal"
@@ -153,7 +179,7 @@ class App extends Component {
           {this.generateQuestions()}
         </div>
         <div>
-          <QuestionPreview question={this.state.activeQuestion} />
+          <QuestionPreview question={this.state.activeQuestion} desc={this.state.activeDesc}/>
         </div>
       </div>
     );

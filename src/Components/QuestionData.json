@@ -1,14 +1,17 @@
 [
   {
     "question": "What is the pythagorean theorem?",
+    "desc": "i hate react",
     "upvotes": 13
   },
   {
     "question": "What do I need to learn how to add?",
+    "desc": "i hate react a lot",
     "upvotes": 10
   },
   {
     "question": "If I have an isosceles triangle, what do I do with my other triangles?",
+    "desc": "i hate react so so much",
     "upvotes": 7
   }
 ]
