@@ -18,10 +18,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currKey: 0,
       previewQuestion: false,
-      activeQuestion:
-        "You haven't selected a post yet! Click on anything on the sidebar to view it.",
       questions: questionInfo,
+      activeQuestion:
+        "You haven't selected a post yet! Click on one in the sidebar to view it.",
+      activeDesc:
+        "By the way, you look great today!",
+      activeUpvotes:
+        0,
       // State of whether the answer question modal is open or not
       addQuestion: false
     };
@@ -35,6 +40,7 @@ class App extends Component {
     let newQ = [
       {
         question: this.state.newQuestion,
+        desc: this.state.newDesc,
         upvotes: 0
       }
     ];
@@ -52,6 +58,20 @@ class App extends Component {
     console.log("new value of state: " + this.state.newQuestion);
   };
 
+  setNewDesc = e => {
+    this.setState({
+      newDesc: e.target.value
+    });
+    console.log("new value of state: " + this.state.newDesc);
+  };
+
+  setUpvotes = e => {
+    this.setState({
+      newUpvotes: e.target.value
+    });
+    console.log("new value of state: " + this.state.Upvotes);
+  };
+
   // Generates all of the question previews from the array
   // of questions in the state
   generateQuestions = () => {
@@ -63,7 +83,7 @@ class App extends Component {
       let currQuestion = questionArr[i];
       //Create the parent and add the children
       sidebar.push(
-        <div className="question" onClick={this.viewQuestion}>
+        <div className="question">
           <div className="row">
             <div className="columnA">
               <IconButton className="upvote">
@@ -72,7 +92,7 @@ class App extends Component {
               <br />
               <p>{currQuestion["upvotes"]}</p>
             </div>
-            <div id="main-question" className="columnB">
+            <div id="main-question" className="columnB" value={i} onClick={this.viewQuestion}>
               {currQuestion["question"]}
             </div>
           </div>
@@ -83,10 +103,13 @@ class App extends Component {
   };
 
   viewQuestion = e => {
-    let question = e.target.textContent;
+    var currIndex = e.target.getAttribute('value');
     this.setState({
+      currKey: currIndex,
       previewQuestion: !this.state.previewQuestion,
-      activeQuestion: question
+      activeQuestion: this.state.questions[currIndex]["question"],
+      activeDesc: this.state.questions[currIndex]["desc"],
+      activeUpvotes: this.state.questions[currIndex]["upvotes"]
     });
   };
 
@@ -111,7 +134,22 @@ class App extends Component {
                 id="standard-full-width"
                 label="Enter your question below:"
                 style={{ margin: 8, width: 500 }}
-                placeholder="Placeholder"
+                placeholder=""
+                helperText=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{" "}
+            </DialogContentText>
+            <DialogContentText>
+              <TextField
+                onChange={this.setNewDesc}
+                id="standard-full-width"
+                label="Enter a detailed description below:"
+                style={{ margin: 8, width: 500 }}
+                placeholder=""
                 helperText=""
                 fullWidth
                 margin="normal"
@@ -153,7 +191,7 @@ class App extends Component {
           {this.generateQuestions()}
         </div>
         <div>
-          <QuestionPreview question={this.state.activeQuestion} />
+          <QuestionPreview question={this.state.activeQuestion} votes={this.state.activeUpvotes} desc={this.state.activeDesc}/>
         </div>
       </div>
     );

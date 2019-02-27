@@ -1,14 +1,17 @@
 [
   {
     "question": "What is the pythagorean theorem?",
+    "desc": "I think he said it'll be on the next test.",
     "upvotes": 13
   },
   {
     "question": "What do I need to learn how to add?",
+    "desc": "I've been trying for weeks now!!!",
     "upvotes": 10
   },
   {
     "question": "If I have an isosceles triangle, what do I do with my other triangles?",
+    "desc": "I would prefer an instructor answer.",
     "upvotes": 7
   }
 ]
