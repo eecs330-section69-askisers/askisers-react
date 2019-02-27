@@ -56,6 +56,7 @@ class App extends Component {
   // of questions in the state
   generateQuestions = () => {
     const questionArr = this.state.questions;
+    console.log("QUESTION ARRAY: " + questionArr[0]["question"]);
     let sidebar = [];
 
     // Outer loop to create parent
