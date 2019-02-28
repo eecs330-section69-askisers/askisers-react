@@ -3,7 +3,7 @@
   height: 100%;
   float: left;
 
-  border-right: 50px solid blue;
+  border-right: 5px solid gray;
 }
 
 #question-title {
