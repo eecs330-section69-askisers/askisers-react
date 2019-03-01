@@ -125,7 +125,7 @@ class App extends Component {
           aria-labelledby="responsive-dialog-title"
         >
           <DialogTitle id="responsive-dialog-title">
-            {"Create a new post"}
+            {"Create a new wahoo"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
