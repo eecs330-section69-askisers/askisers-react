@@ -118,6 +118,7 @@ class Dashboard extends Component {
   };
 
   render() {
+    // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
 
     return (
