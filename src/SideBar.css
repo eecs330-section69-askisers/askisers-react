@@ -1,7 +1,8 @@
 #sidebarsteve {
   width: 25%;
-  height: 100%;
+  height: 88.75vmin;
   float: left;
+  overflow:scroll;
 
   border-right: 5px solid gray;
 }

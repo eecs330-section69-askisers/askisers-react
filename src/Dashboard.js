@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IconButton, AppBar, Toolbar } from "@material-ui/core";
+import { IconButton, AppBar, Toolbar, List } from "@material-ui/core";
 import { Search, Add } from "@material-ui/icons";
 import "./App.css";
 import "./SideBar.css";
@@ -181,8 +181,7 @@ class Dashboard extends Component {
         <AppBar position="static" color="primary">
           <Toolbar>
             <Logo/>
-            <Button color="inherit">Questions</Button>
-            <Button color="inherit">Profile</Button>
+            
           </Toolbar>
         </AppBar>
 
