@@ -3,10 +3,13 @@ import { IconButton, AppBar, Toolbar } from "@material-ui/core";
 import { Search, Add } from "@material-ui/icons";
 import "./App.css";
 import "./SideBar.css";
+import "./Logo.css"
+
 import QuestionPreview from "./Components/QuestionPreview";
 import questionInfo from "./Components/QuestionData.json";
-import Button from "@material-ui/core/Button";
+import Logo from "./Components/Logo.js"
 
+import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -177,6 +180,7 @@ class Dashboard extends Component {
 
         <AppBar position="static" color="primary">
           <Toolbar>
+            <Logo/>
             <Button color="inherit">Questions</Button>
             <Button color="inherit">Profile</Button>
           </Toolbar>

@@ -42,7 +42,8 @@ body {
 
 #signUpHeader {
   height: 60px;
-  background-color: #7db4b5;
+  /*background-color: #7db4b5;*/
+  background-color: #3F51B5;
   border-radius: 8px 8px 0 0;
   box-shadow: inset 0px -5px 0px 0px rgba(224, 239, 241, 0.75);
   -webkit-transition: border 0.2s linear, box-shadow 0.2s linear,
@@ -70,7 +71,8 @@ body {
 #signUpButton {
   width: 200px;
   height: 50px;
-  background-color: rgba(125, 180, 181, 1);
+  /*background-color: rgba(125, 180, 181, 1);*/
+  background-color: #3F51B5;
   color: white;
   font-size: 20px;
 }
@@ -92,7 +94,8 @@ body {
   left: 1px;
   height: 15px;
   width: 15px;
-  border: 3px solid rgba(125, 180, 181, 0.85);
+  /* border: 3px solid rgba(125, 180, 181, 0.85); */
+  border: 3px solid #3F51B5;
   border-radius: 5px;
   transition: background-color 0.2s;
 }
@@ -101,7 +104,8 @@ body {
   content: "\2713";
   font-size: 15px;
   line-height: 15px;
-  color: rgba(125, 180, 181, 0.85);
+  /* color: rgba(125, 180, 181, 0.85); */
+  color: #3F51B5;
 }
 
 .signUpRow input[type="checkbox"] + label {
