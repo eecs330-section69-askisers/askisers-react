@@ -62,7 +62,7 @@ class App extends Component {
                 <input type="text" placeholder="Username" />
               </div>
               <div className="signUpRow">
-                <input type="text" placeholder="Password" />
+                <input type="password" placeholder="Password" />
               </div>
               <FormCheckBox
                 id="terms"

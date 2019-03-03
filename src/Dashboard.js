@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IconButton } from "@material-ui/core";
+import { IconButton, AppBar, Toolbar } from "@material-ui/core";
 import { Search, Add } from "@material-ui/icons";
 import "./App.css";
 import "./SideBar.css";
@@ -22,9 +22,9 @@ class Dashboard extends Component {
       previewQuestion: false,
       questions: questionInfo,
       activeQuestion:
-        "You haven't selected a post yet! Click on one in the sidebar to view it.",
+        "Hi " + this.props.name + ", click on a question in the sidebar to view it.",
       activeDesc: "By the way, you look great today!",
-      activeUpvotes: 0,
+      activeUpvotes: "",
       // State of whether the answer question modal is open or not
       addQuestion: false
     };
@@ -175,6 +175,13 @@ class Dashboard extends Component {
           </DialogActions>
         </Dialog>
 
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Button color="inherit">Questions</Button>
+            <Button color="inherit">Profile</Button>
+          </Toolbar>
+        </AppBar>
+
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
             <input type="text" placeholder="Find a question or topic.." />
@@ -201,6 +208,15 @@ class Dashboard extends Component {
             votes={this.state.activeUpvotes}
             desc={this.state.activeDesc}
           />
+          <br/>
+          <center>
+            <Button
+              variant="contained"
+              color="primary"
+            >
+              Answer this question
+            </Button>
+            </center>
         </div>
       </div>
     );
