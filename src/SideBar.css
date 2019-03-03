@@ -1,8 +1,7 @@
 #sidebarsteve {
   width: 25%;
-  height: 88.75vmin;
   float: left;
-  overflow:scroll;
+  overflow:auto;
 
   border-right: 5px solid gray;
 }
@@ -50,6 +49,10 @@ body {
   font-size: 17px;
   color: black;
   background-color: #e9e9e9;
+}
+
+.sideDrawer {
+  width: 250px;
 }
 
 .button {

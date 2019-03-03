@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { IconButton, AppBar, Toolbar, List } from "@material-ui/core";
-import { Search, Add } from "@material-ui/icons";
+import { IconButton, AppBar, Toolbar, List, Drawer } from "@material-ui/core";
+import { Search, Add} from "@material-ui/icons";
+import MenuIcon from '@material-ui/icons/Menu';
 import "./App.css";
 import "./SideBar.css";
 import "./Logo.css"
@@ -29,9 +30,14 @@ class Dashboard extends Component {
       activeDesc: "By the way, you look great today!",
       activeUpvotes: "",
       // State of whether the answer question modal is open or not
-      addQuestion: false
+      addQuestion: false,
+      drawerOpen: false
     };
   }
+  
+  drawerToggle = () => {
+    this.setState({ drawerOpen: !this.state.drawerOpen });
+  };
 
   handleOpen = () => {
     this.setState({ addQuestion: true });
@@ -124,6 +130,12 @@ class Dashboard extends Component {
     // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
 
+    const sideList = (
+      <div className="sideDrawer">
+        dog
+      </div>
+    );
+
     return (
       <div>
         <Dialog
@@ -180,10 +192,12 @@ class Dashboard extends Component {
 
         <AppBar position="static" color="primary">
           <Toolbar>
+            <IconButton onClick={this.drawerToggle}><MenuIcon/></IconButton>
             <Logo/>
-            
           </Toolbar>
         </AppBar>
+
+        <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>{sideList}</Drawer>
 
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
