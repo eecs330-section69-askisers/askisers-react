@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { IconButton, AppBar, Toolbar, List, Drawer } from "@material-ui/core";
+import { IconButton, AppBar, Toolbar, Drawer } from "@material-ui/core";
 import { Search, Add} from "@material-ui/icons";
 import MenuIcon from '@material-ui/icons/Menu';
 import "./App.css";
 import "./SideBar.css";
 import "./Logo.css"
+
+import { withStyles } from '@material-ui/core/styles';
 
 import QuestionPreview from "./Components/QuestionPreview";
 import questionInfo from "./Components/QuestionData.json";
@@ -17,6 +19,19 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+
+const styles = theme => ({
+  menuButton: {
+    color: "white"
+  }
+})
+
+const sideList = (
+  <div className="sideDrawer">
+    <div className="userName">Joe Schmoe</div>
+    <div className="className">EECS 330</div>
+  </div>
+);
 
 class Dashboard extends Component {
   constructor(props) {
@@ -129,12 +144,7 @@ class Dashboard extends Component {
   render() {
     // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
-
-    const sideList = (
-      <div className="sideDrawer">
-        dog
-      </div>
-    );
+    const {classes} = this.props;
 
     return (
       <div>
@@ -192,7 +202,7 @@ class Dashboard extends Component {
 
         <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton onClick={this.drawerToggle}><MenuIcon/></IconButton>
+            <IconButton onClick={this.drawerToggle} className={classes.menuButton}><MenuIcon/></IconButton>
             <Logo/>
           </Toolbar>
         </AppBar>
@@ -240,4 +250,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withStyles(styles)(Dashboard);
