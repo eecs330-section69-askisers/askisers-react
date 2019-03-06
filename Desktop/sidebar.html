@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Question Sidebar</title>
+	
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<style>
+		#sidebarsteve{
+			width: 25%;
+			height: 100%;
+			float: left;
+
+			border-right: 5px solid gray;
+		}
+		#question-title{
+			font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+			font-size: 24px;
+			border-bottom: 2px solid blue;
+			padding: 5px 45px 5px 5px;
+			margin-left: 0px;
+			display: inline;
+			float: left;
+			
+		}
+		body{
+			height: 100%;
+		}
+		.topnav {
+  			overflow: hidden;
+ 			background-color: #e9e9e9;
+			border: 2px solid blue;
+			border-radius: 4px;
+			width: 300px;
+			display: block;
+			margin: auto;
+		}
+		.topnav a {
+			float: right;
+			width: 10%;
+ 			display: block;
+ 			color: blue;
+ 			text-align: center;
+ 			padding: 4px 6px;
+ 			text-decoration: none;
+ 			font-size: 24px;
+		}
+		.topnav a:hover{
+			background-color: green;
+			
+		}
+		.topnav input[type=text] {
+		    width: 75%;
+		    float: left;
+		    padding: 6px;
+		    border: none;
+		    margin-top: 0px;
+		    margin-right: 16px;
+		    font-size: 17px;
+			color: black;
+			background-color: #e9e9e9;
+		}
+		
+		.button {
+		    background-color: #4CAF50;
+		    border: none;
+		    color: white;
+		    padding: 15px 25px;
+		    text-align: center;
+			margin: auto;
+			display: block;
+  		    font-size: 16px;
+		    cursor: pointer;
+			border-radius: 5px;
+		}
+		.question{
+			display: inline-block;
+			position: static;
+			border: 1px solid black;
+			border-radius: 5px;
+			width: 95%;
+			margin: 0px auto;
+			
+		}
+		.upvote{
+			float: left;
+			color: blue;
+			background-color: green;
+			border: none;
+			margin: auto;
+			display: block;
+		}
+		.columnA{
+		  width: 40px;
+			/*float: left;*/
+			border-right: 1px solid black;
+			text-align: center;
+			
+		}
+		.columnB{
+			flex: 1;
+			margin: 5px 10px 5px 10px;
+			font-family: Arial;
+		}
+
+		.row{
+			display: flex;
+			width: 100%;
+			height: 80px;
+		}
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+	
+	
+	
+	</style>
+</head>
+
+<body>
+
+	
+	
+	<div id="sidebarsteve">
+		<div class="topnav">
+  			<input type="text" placeholder="Find a question or topic..">
+			<a class="material-icons">search</a>
+			<!-- <button type="submit">Search!</button> -->
+		</div>
+		<br>
+		<button class="button">Create a new post!</button>
+		<br><br>
+		<div id="question-title">Questions</div>
+		<br><br><br>
+		
+		<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>13</p>
+				 </div>
+ 				 <div class="columnB">
+					 How do you perform the Pythagorean Theorem? What does it do?
+					 
+				 </div>
+			</div>
+		</div>
+		<br><br>
+				<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>10</p>
+				 </div>
+ 				 <div class="columnB">
+					 What do I need to learn how to add?
+					 
+				 </div>
+			</div>
+		</div>
+		<br><br>
+				<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>7</p>
+				 </div>
+ 				 <div class="columnB">
+					 If I have an isosceles triangle, what do I do with my other triangles?
+					 
+				 </div>
+			</div>
+		</div>
+		<br><br>
+				<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>5</p>
+				 </div>
+ 				 <div class="columnB">
+					 Can someone please explain long division?
+					 
+				 </div>
+			</div>
+		</div>
+		<br><br>
+				<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>2</p>
+				 </div>
+ 				 <div class="columnB">
+					 How do I carry a zero?
+					 
+				 </div>
+			</div>
+		</div>
+		<br><br>
+				<div class="question">
+			<div class="row">
+  				 <div class="columnA">
+					<button class="upvote material-icons">add</button>
+					 <br>
+					<p>0</p>
+				 </div>
+ 				 <div class="columnB">
+					 Is there any other way for me to find the integral between two points on a parametric equation?
+					 
+				 </div>
+			</div>
+		</div>
+		</div>
+
+		
+	
+	
+	
+	
+	
+</body>
+</html>

@@ -16,6 +16,7 @@
   padding: 25px;
 }
 
+<<<<<<< HEAD
 /* Login Screen Styles */
 
 @mixin shadow-raised {
@@ -114,4 +115,9 @@ body {
   position: relative;
   padding: 3px 0 0 30px;
   cursor: pointer;
+=======
+question{
+  margin: 10px;
+  background-color: yellow;
+>>>>>>> updatedstyles
 }
