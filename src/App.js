@@ -25,7 +25,8 @@ class App extends Component {
       name: "",
       username: "",
       password: "",
-      activeScreen: "Login"
+      activeScreen: "Login",
+      class: ""
     };
   }
 
@@ -37,6 +38,11 @@ class App extends Component {
   updateName = e => {
     this.setState({ name: e.target.value });
     console.log("New name: " + this.state.name);
+  };
+
+  updateClass = e => {
+    this.setState({ class: e.target.value });
+    console.log("New class: " + this.state.class);
   };
 
   render() {
@@ -64,6 +70,9 @@ class App extends Component {
               <div className="signUpRow">
                 <input type="password" placeholder="Password" />
               </div>
+              <div className="signUpRow">
+                <input onChange={this.updateClass} type="text" placeholder="Class Name" />
+              </div>
               <FormCheckBox
                 id="terms"
                 label="I agree to the terms and conditions"
@@ -76,7 +85,7 @@ class App extends Component {
             </center>
           </div>
         ) : activeScreen === "Dashboard" ? (
-          <Dashboard name={this.state.name} />
+          <Dashboard name={this.state.name} class={this.state.class}/>
         ) : null}
       </div>
     );
