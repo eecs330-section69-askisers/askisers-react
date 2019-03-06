@@ -1,7 +1,6 @@
-.App {
-  text-align: center;
-  display: grid;
-}
+@import url(https://fonts.googleapis.com/css?family=Damion);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -17,7 +16,102 @@
   padding: 25px;
 }
 
-question{
-  margin: 10px;
-  background-color: yellow;
+/* Login Screen Styles */
+
+@mixin shadow-raised {
+  @include box-shadow(0 4px 10px 1px rgba(0, 0, 0, 0.2));
+
+  &:before,
+  &:after {
+    content: none;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans";
+}
+
+#signUpContainer {
+  width: 300px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  @include shadow-raised();
+}
+
+#signUpHeader {
+  height: 60px;
+  /*background-color: #7db4b5;*/
+  background-color: #3F51B5;
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0px -5px 0px 0px rgba(224, 239, 241, 0.75);
+  -webkit-transition: border 0.2s linear, box-shadow 0.2s linear,
+    background-color 0.35s ease;
+}
+
+#signUpHeaderTitle {
+  text-align: center;
+  padding-top: 13px;
+  font-size: 28px;
+  font-family: "Damion";
+  color: #ffffff;
+}
+
+#signUpFormContainer {
+  padding: 20px 10px;
+  position: relative;
+}
+
+#signUpForm {
+  width: 90%;
+  margin: 0px auto;
+}
+
+#signUpButton {
+  width: 200px;
+  height: 50px;
+  /*background-color: rgba(125, 180, 181, 1);*/
+  background-color: #3F51B5;
+  color: white;
+  font-size: 20px;
+}
+
+.signUpRow {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.signUpRow input[type="checkbox"] {
+  display: none;
+}
+
+.signUpRow input[type="checkbox"] + label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 1px;
+  height: 15px;
+  width: 15px;
+  /* border: 3px solid rgba(125, 180, 181, 0.85); */
+  border: 3px solid #3F51B5;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.signUpRow input[type="checkbox"]:checked + label::before {
+  content: "\2713";
+  font-size: 15px;
+  line-height: 15px;
+  /* color: rgba(125, 180, 181, 0.85); */
+  color: #3F51B5;
+}
+
+.signUpRow input[type="checkbox"] + label {
+  font-size: 12px;
+  position: relative;
+  padding: 3px 0 0 30px;
+  cursor: pointer;
 }

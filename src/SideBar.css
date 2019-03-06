@@ -1,7 +1,7 @@
 #sidebarsteve {
   width: 25%;
-  height: 100%;
   float: left;
+  overflow:auto;
 
   border-right: 5px solid #e91e63;
 }
@@ -56,6 +56,10 @@ body {
   margin: 10px 10px;
 }
 
+.sideDrawer {
+  width: 250px;
+}
+
 .button {
   background-color: #4caf50;
   border: none;
@@ -78,7 +82,6 @@ body {
   /* margin: 0px auto; */
   margin-top: 25px;
   background-color: #fcd9d6;
-
 }
 
 .upvote {
@@ -91,6 +94,7 @@ body {
 }
 .columnA {
   width: 40px;
+  height: 100%;
   /*float: left;*/
   border-right: 1px solid black;
   text-align: center;
