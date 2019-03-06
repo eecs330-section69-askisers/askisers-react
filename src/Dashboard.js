@@ -26,12 +26,6 @@ const styles = theme => ({
   }
 })
 
-const sideList = (
-  <div className="sideDrawer">
-    <div className="userName">Joe Schmoe</div>
-    <div className="className">EECS 330</div>
-  </div>
-);
 
 class Dashboard extends Component {
   constructor(props) {
@@ -145,6 +139,13 @@ class Dashboard extends Component {
     // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
     const {classes} = this.props;
+
+    const sideList = (
+      <div className="sideDrawer">
+        <div className="userName">{this.props.name}</div>
+        <div className="className">{this.props.class}</div>
+      </div>
+    );
 
     return (
       <div>
