@@ -1,8 +1,10 @@
 #cardHeader {
    text-align: left;
-   color: #4422ff; 
+   color: #4422ff;
  }
 
 #questionText {
    text-align: left;
+   font-size: 50px;
+   color: green;
  }
