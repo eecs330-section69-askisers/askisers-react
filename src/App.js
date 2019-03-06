@@ -115,6 +115,7 @@ class App extends Component {
 
   render() {
     const { fullScreen } = this.props;
+    console.log("wtf is actually going on srsly this is fucking strange as shit");
 
     return (
       <div>
