@@ -6,5 +6,7 @@
 #questionText {
    text-align: left;
    font-size: 50px;
-   color: green;
+   color: #f5f5f5;
+   border-radius: 5px 5px 5px 5px;
+   background-color: #fdecea;
  }

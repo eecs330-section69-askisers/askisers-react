@@ -14,7 +14,7 @@ class Login extends Component {
   render() {
     return (
       <div id="signUpContainer">
-        <SignUpHeader title="Askisers" />
+        <SignUpHeader  title="Askisers" />
         <SignUpForm />
       </div>
     );
@@ -32,6 +32,8 @@ const FormInput = props => (
     <input type={props.type} placeholder={props.placeholder} />
   </div>
 );
+
+const FormInput = theme
 
 const FormCheckBox = props => (
   <div className="signUpRow">

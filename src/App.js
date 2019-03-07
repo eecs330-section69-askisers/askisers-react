@@ -6,14 +6,14 @@ import "./SideBar.css";
 import Dashboard from "./Dashboard";
 
 const SignUpHeader = props => (
-  <div id="signUpHeader">
-    <div id="signUpHeaderTitle">Askisers</div>
+  <div id="signUpHeader" style={{backgroundColor: "#e91e63"}}>
+    <div id="signUpHeaderTitle" style={{color: "#9adcfa"}}>Askisers</div>
   </div>
 );
 
 const FormCheckBox = props => (
-  <div className="signUpRow">
-    <input id={props.id} type="checkbox" />
+  <div className="signUpRow" style={{padding: "10px"}} >
+    <input style={{border: "#e91e63"}} id={props.id} type="checkbox" />
     <label htmlFor={props.id}>{props.label}</label>
   </div>
 );
@@ -54,7 +54,7 @@ class App extends Component {
         {activeScreen === "Login" ? (
           <div>
             <div id="signUpContainer">
-              <div id="signUpHeader">
+              <div id="signUpHeader" style={{backgroundColor: "#e91e63"}}>
                 <SignUpHeader />
               </div>
               <div className="signUpRow">
@@ -79,7 +79,7 @@ class App extends Component {
               />
             </div>{" "}
             <center>
-              <button onClick={this.openDashboard} id="signUpButton">
+              <button onClick={this.openDashboard} id="signUpButton" style={{backgroundColor: "#e91e63", borderRadius: "5px", color: "#9adcfa"}}>
                 Sign up
               </button>
             </center>

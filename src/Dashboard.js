@@ -23,7 +23,7 @@ import TextField from "@material-ui/core/TextField";
 const styles = theme => ({
   menuButton: {
     color: "white"
-  }
+  },
 })
 
 
@@ -43,7 +43,7 @@ class Dashboard extends Component {
       drawerOpen: false
     };
   }
-  
+
   drawerToggle = () => {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   };
@@ -201,7 +201,7 @@ class Dashboard extends Component {
           </DialogActions>
         </Dialog>
 
-        <AppBar position="static" color="primary">
+        <AppBar position="static" style={{backgroundColor: "#673ab7", color: "#ffffff"}}>
           <Toolbar>
             <IconButton onClick={this.drawerToggle} className={classes.menuButton}><MenuIcon/></IconButton>
             <Logo/>
@@ -222,7 +222,7 @@ class Dashboard extends Component {
             <Button
               onClick={this.handleOpen}
               variant="contained"
-              color="primary"
+              style={{backgroundColor: "#673ab7", color: "#ffffff"}}
             >
               Create a new post
             </Button>
@@ -240,9 +240,9 @@ class Dashboard extends Component {
           <center>
             <Button
               variant="contained"
-              color="primary"
+              style={{backgroundColor: "#673ab7", color: "#ffffff", fontSize: "18px", fontStyle: "bold"}}
             >
-              Answer this question
+              Answer this question!
             </Button>
             </center>
         </div>
