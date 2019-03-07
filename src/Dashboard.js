@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { IconButton, AppBar, Toolbar, Drawer } from "@material-ui/core";
-import { Search, Add} from "@material-ui/icons";
-import MenuIcon from '@material-ui/icons/Menu';
+import { Search, Add } from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import "./SideBar.css";
-import "./Logo.css"
+import "./Logo.css";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
 import QuestionPreview from "./Components/QuestionPreview";
 import questionInfo from "./Components/QuestionData.json";
-import Logo from "./Components/Logo.js"
+import Logo from "./Components/Logo.js";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -19,13 +19,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = theme => ({
   menuButton: {
     color: "white"
   }
-})
-
+});
 
 class Dashboard extends Component {
   constructor(props) {
@@ -35,7 +35,9 @@ class Dashboard extends Component {
       previewQuestion: false,
       questions: questionInfo,
       activeQuestion:
-        "Hi " + this.props.name + ", click on a question in the sidebar to view it.",
+        "Hi " +
+        this.props.name +
+        ", click on a question in the sidebar to view it.",
       activeDesc: "By the way, you look great today!",
       activeUpvotes: "",
       // State of whether the answer question modal is open or not
@@ -43,7 +45,7 @@ class Dashboard extends Component {
       drawerOpen: false
     };
   }
-  
+
   drawerToggle = () => {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   };
@@ -138,12 +140,19 @@ class Dashboard extends Component {
   render() {
     // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     const sideList = (
       <div className="sideDrawer">
-        <div className="userName">{this.props.name}</div>
-        <div className="className">{this.props.class}</div>
+        <br />
+        <br />
+        <center>
+          <Avatar>{this.props.name[0]}</Avatar>
+          <h1>
+            <div className="userName">{this.props.name}</div>
+          </h1>
+          <div className="className">{this.props.class}</div>
+        </center>
       </div>
     );
 
@@ -203,12 +212,19 @@ class Dashboard extends Component {
 
         <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton onClick={this.drawerToggle} className={classes.menuButton}><MenuIcon/></IconButton>
-            <Logo/>
+            <IconButton
+              onClick={this.drawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Logo />
           </Toolbar>
         </AppBar>
 
-        <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>{sideList}</Drawer>
+        <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>
+          {sideList}
+        </Drawer>
 
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
@@ -236,15 +252,12 @@ class Dashboard extends Component {
             votes={this.state.activeUpvotes}
             desc={this.state.activeDesc}
           />
-          <br/>
+          <br />
           <center>
-            <Button
-              variant="contained"
-              color="primary"
-            >
+            <Button variant="contained" color="primary">
               Answer this question
             </Button>
-            </center>
+          </center>
         </div>
       </div>
     );
