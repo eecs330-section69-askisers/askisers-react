@@ -1,13 +1,13 @@
 {
-  "main.css": "/askisers-react/static/css/main.bb891cb3.chunk.css",
-  "main.js": "/askisers-react/static/js/main.009912b6.chunk.js",
-  "main.js.map": "/askisers-react/static/js/main.009912b6.chunk.js.map",
+  "main.css": "/askisers-react/static/css/main.9bd2cb48.chunk.css",
+  "main.js": "/askisers-react/static/js/main.9b8e754b.chunk.js",
+  "main.js.map": "/askisers-react/static/js/main.9b8e754b.chunk.js.map",
   "runtime~main.js": "/askisers-react/static/js/runtime~main.e9f87a4d.js",
   "runtime~main.js.map": "/askisers-react/static/js/runtime~main.e9f87a4d.js.map",
-  "static/js/2.3e5d31f0.chunk.js": "/askisers-react/static/js/2.3e5d31f0.chunk.js",
-  "static/js/2.3e5d31f0.chunk.js.map": "/askisers-react/static/js/2.3e5d31f0.chunk.js.map",
+  "static/js/2.bc137222.chunk.js": "/askisers-react/static/js/2.bc137222.chunk.js",
+  "static/js/2.bc137222.chunk.js.map": "/askisers-react/static/js/2.bc137222.chunk.js.map",
   "index.html": "/askisers-react/index.html",
-  "precache-manifest.6bbad5dac5fc3314c69b1a2151656f41.js": "/askisers-react/precache-manifest.6bbad5dac5fc3314c69b1a2151656f41.js",
+  "precache-manifest.b41750474a77275d301ee545643bf818.js": "/askisers-react/precache-manifest.b41750474a77275d301ee545643bf818.js",
   "service-worker.js": "/askisers-react/service-worker.js",
-  "static/css/main.bb891cb3.chunk.css.map": "/askisers-react/static/css/main.bb891cb3.chunk.css.map"
+  "static/css/main.9bd2cb48.chunk.css.map": "/askisers-react/static/css/main.9bd2cb48.chunk.css.map"
 }
