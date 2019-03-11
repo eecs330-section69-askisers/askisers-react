@@ -1,6 +1,7 @@
 #sidebarsteve {
   width: 25%;
   float: left;
+  height: 100%;
   overflow:auto;
 
   border-right: 5px solid gray;
