@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { IconButton, AppBar, Toolbar, Drawer } from "@material-ui/core";
-import { Search, Add} from "@material-ui/icons";
-import MenuIcon from '@material-ui/icons/Menu';
+import { Search, Add } from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import "./SideBar.css";
-import "./Logo.css"
+import "./Logo.css";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
 import QuestionPreview from "./Components/QuestionPreview";
+import Answer from "./Components/Answer";
 import questionInfo from "./Components/QuestionData.json";
-import Logo from "./Components/Logo.js"
+import Logo from "./Components/Logo.js";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -19,27 +20,41 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = theme => ({
   menuButton: {
     color: "white"
-  },
-})
-
+  }
+});
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    var data = [];
+    var answered = [];
+    for(var i = 0; i < questionInfo.length; i++)
+    {
+      data.push("");
+      answered.push(false);
+    }
+    console.log(data);
     this.state = {
       currKey: 0,
       previewQuestion: false,
       questions: questionInfo,
+      answers: data,
+      answeredQs: answered,
       activeQuestion:
-        "Hi " + this.props.name + ", click on a question in the sidebar to view it.",
+        "Hi " +
+        this.props.name +
+        ", click on a question in the sidebar to view it.",
       activeDesc: "By the way, you look great today!",
       activeUpvotes: "",
+      isAnswerable: false,
       // State of whether the answer question modal is open or not
       addQuestion: false,
+      addAnswer: false,
       drawerOpen: false
     };
   }
@@ -67,6 +82,17 @@ class Dashboard extends Component {
     console.log("New set of questions: " + this.state.questions);
   };
 
+  handleAnsOpen = () => {
+    this.setState({ addAnswer: true });
+  };
+
+  handleAnsClose = () => {
+    var answered = this.state.answeredQs
+    answered[this.state.currKey] = true;
+    this.setState({ addAnswer: false,
+                    answeredQs: answered });
+  };
+
   setNewQuestion = e => {
     this.setState({
       newQuestion: e.target.value
@@ -81,12 +107,13 @@ class Dashboard extends Component {
     console.log("new value of state: " + this.state.newDesc);
   };
 
-  setUpvotes = e => {
-    this.setState({
-      newUpvotes: e.target.value
-    });
-    console.log("new value of state: " + this.state.Upvotes);
-  };
+  setNewAnswer = e => {
+      var data = this.state.answers;
+      data[this.state.currKey] = e.target.value;
+      this.setState({
+          answers: data
+      })
+  }
 
   // Generates all of the question previews from the array
   // of questions in the state
@@ -131,19 +158,27 @@ class Dashboard extends Component {
       previewQuestion: !this.state.previewQuestion,
       activeQuestion: this.state.questions[currIndex]["question"],
       activeDesc: this.state.questions[currIndex]["desc"],
-      activeUpvotes: this.state.questions[currIndex]["upvotes"]
+      activeUpvotes: this.state.questions[currIndex]["upvotes"],
+      isAnswerable: true
     });
   };
 
   render() {
     // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     const sideList = (
       <div className="sideDrawer">
-        <div className="userName">{this.props.name}</div>
-        <div className="className">{this.props.class}</div>
+        <br />
+        <br />
+        <center>
+          <Avatar>{this.props.name[0]}</Avatar>
+          <h1>
+            <div className="userName">{this.props.name}</div>
+          </h1>
+          <div className="className">{this.props.class}</div>
+        </center>
       </div>
     );
 
@@ -203,12 +238,19 @@ class Dashboard extends Component {
 
         <AppBar position="static" style={{backgroundColor: "#673ab7", color: "#ffffff"}}>
           <Toolbar>
-            <IconButton onClick={this.drawerToggle} className={classes.menuButton}><MenuIcon/></IconButton>
-            <Logo/>
+            <IconButton
+              onClick={this.drawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Logo />
           </Toolbar>
         </AppBar>
 
-        <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>{sideList}</Drawer>
+        <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>
+          {sideList}
+        </Drawer>
 
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
@@ -237,14 +279,46 @@ class Dashboard extends Component {
             desc={this.state.activeDesc}
           />
           <br/>
-          <center>
+          <div>
+          <center> 
             <Button
               variant="contained"
-              style={{backgroundColor: "#673ab7", color: "#ffffff", fontSize: "18px", fontStyle: "bold"}}
-            >
-              Answer this question!
+              color="primary"
+              onClick={this.handleAnsOpen}
+              style={this.state.isAnswerable ? {} : { display: 'none' }}>
+              Answer this question
             </Button>
-            </center>
+          </center>
+          <Dialog
+            open={this.state.addAnswer}
+            onClose={this.handleAnsClose}
+            aria-labelledby="form-dialog-title"
+          >
+          <DialogTitle id="form-dialog-title">Answering</DialogTitle>
+            <DialogContent>
+              <TextField
+                onChange={this.setNewAnswer}
+                id="standard-full-width"
+                label="Enter your answer below:"
+                style={{ margin: 8, width: 500 }}
+                placeholder=""
+                helperText=""
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{" "}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleAnsClose} color="primary">
+                Done
+              </Button>
+              </DialogActions>
+            </Dialog>
+          </div>
+          <br/>
+          <Answer answered={this.state.answeredQs[this.state.currKey]} answer={this.state.answers[this.state.currKey]}/>
         </div>
       </div>
     );
