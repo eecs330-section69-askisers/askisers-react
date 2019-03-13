@@ -33,8 +33,7 @@ class Dashboard extends Component {
     super(props);
     var data = [];
     var answered = [];
-    for(var i = 0; i < questionInfo.length; i++)
-    {
+    for (var i = 0; i < questionInfo.length; i++) {
       data.push("");
       answered.push(false);
     }
@@ -58,6 +57,19 @@ class Dashboard extends Component {
       drawerOpen: false
     };
   }
+
+  sortByUpvotes = () => {
+    const questionArr = this.state.questions;
+
+    questionArr.sort(function(a, b) {
+      return b.upvotes - a.upvotes;
+    });
+    console.log("SORTED BY UPVOTES!");
+    for (let i = 0; i < questionArr.length; i++) {
+      console.log("Question" + i);
+      console.log(questionArr[i]["upvotes"]);
+    }
+  };
 
   drawerToggle = () => {
     this.setState({ drawerOpen: !this.state.drawerOpen });
@@ -87,10 +99,9 @@ class Dashboard extends Component {
   };
 
   handleAnsClose = () => {
-    var answered = this.state.answeredQs
+    var answered = this.state.answeredQs;
     answered[this.state.currKey] = true;
-    this.setState({ addAnswer: false,
-                    answeredQs: answered });
+    this.setState({ addAnswer: false, answeredQs: answered });
   };
 
   setNewQuestion = e => {
@@ -108,12 +119,12 @@ class Dashboard extends Component {
   };
 
   setNewAnswer = e => {
-      var data = this.state.answers;
-      data[this.state.currKey] = e.target.value;
-      this.setState({
-          answers: data
-      })
-  }
+    var data = this.state.answers;
+    data[this.state.currKey] = e.target.value;
+    this.setState({
+      answers: data
+    });
+  };
 
   // Generates all of the question previews from the array
   // of questions in the state
@@ -236,7 +247,10 @@ class Dashboard extends Component {
           </DialogActions>
         </Dialog>
 
-        <AppBar position="static" style={{backgroundColor: "#673ab7", color: "#ffffff"}}>
+        <AppBar
+          position="static"
+          style={{ backgroundColor: "#673ab7", color: "#ffffff" }}
+        >
           <Toolbar>
             <IconButton
               onClick={this.drawerToggle}
@@ -264,7 +278,7 @@ class Dashboard extends Component {
             <Button
               onClick={this.handleOpen}
               variant="contained"
-              style={{backgroundColor: "#673ab7", color: "#ffffff"}}
+              style={{ backgroundColor: "#673ab7", color: "#ffffff" }}
             >
               Create a new post
             </Button>
@@ -278,47 +292,51 @@ class Dashboard extends Component {
             votes={this.state.activeUpvotes}
             desc={this.state.activeDesc}
           />
-          <br/>
+          <br />
           <div>
-          <center> 
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleAnsOpen}
-              style={this.state.isAnswerable ? {} : { display: 'none' }}>
-              Answer this question
-            </Button>
-          </center>
-          <Dialog
-            open={this.state.addAnswer}
-            onClose={this.handleAnsClose}
-            aria-labelledby="form-dialog-title"
-          >
-          <DialogTitle id="form-dialog-title">Answering</DialogTitle>
-            <DialogContent>
-              <TextField
-                onChange={this.setNewAnswer}
-                id="standard-full-width"
-                label="Enter your answer below:"
-                style={{ margin: 8, width: 500 }}
-                placeholder=""
-                helperText=""
-                fullWidth
-                margin="normal"
-                InputLabelProps={{
-                  shrink: true
-                }}
-              />{" "}
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.handleAnsClose} color="primary">
-                Done
+            <center>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.handleAnsOpen}
+                style={this.state.isAnswerable ? {} : { display: "none" }}
+              >
+                Answer this question
               </Button>
+            </center>
+            <Dialog
+              open={this.state.addAnswer}
+              onClose={this.handleAnsClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogTitle id="form-dialog-title">Answering</DialogTitle>
+              <DialogContent>
+                <TextField
+                  onChange={this.setNewAnswer}
+                  id="standard-full-width"
+                  label="Enter your answer below:"
+                  style={{ margin: 8, width: 500 }}
+                  placeholder=""
+                  helperText=""
+                  fullWidth
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />{" "}
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleAnsClose} color="primary">
+                  Done
+                </Button>
               </DialogActions>
             </Dialog>
           </div>
-          <br/>
-          <Answer answered={this.state.answeredQs[this.state.currKey]} answer={this.state.answers[this.state.currKey]}/>
+          <br />
+          <Answer
+            answered={this.state.answeredQs[this.state.currKey]}
+            answer={this.state.answers[this.state.currKey]}
+          />
         </div>
       </div>
     );
