@@ -4,7 +4,7 @@
   height: 100%;
   overflow:auto;
 
-  border-right: 5px solid gray;
+  border-right: 5px solid #e91e63;
 }
 
 #question-title {
@@ -19,15 +19,17 @@
 }
 body {
   height: 100%;
+  background-color: #81d4f9;
 }
 .topnav {
   overflow: hidden;
-  background-color: #e9e9e9;
-  border: 2px solid blue;
+  background-color: #b3e5fb;
+  border: 3px solid #673AB7;
   border-radius: 4px;
   width: 300px;
   display: block;
   margin: auto;
+  box-shadow: 0px 0px 2px  3px #9adcfa inset;
 }
 .topnav a {
   float: right;
@@ -38,6 +40,7 @@ body {
   padding: 4px 6px;
   text-decoration: none;
   font-size: 24px;
+
 }
 .topnav a:hover {
   background-color: green;
@@ -45,11 +48,13 @@ body {
 .topnav input[type="text"] {
   width: 75%;
   float: left;
-  padding: 6px;
+  padding: 0px;
   border: none;
-  font-size: 17px;
+  font-size: 18px;
   color: black;
-  background-color: #e9e9e9;
+  background-color: #b3e5fb;
+  vertical-align: middle;
+  margin: 10px 10px;
 }
 
 .sideDrawer {
@@ -74,9 +79,12 @@ body {
   border: 1px solid black;
   border-radius: 5px;
   width: 95%;
+  box-shadow: 2px 2px  3px #e91e63;;
   /* margin: 0px auto; */
   margin-top: 25px;
+  background-color: #fdecea;
 }
+
 .upvote {
   float: left;
   color: blue;

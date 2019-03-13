@@ -236,7 +236,7 @@ class Dashboard extends Component {
           </DialogActions>
         </Dialog>
 
-        <AppBar position="static" color="primary">
+        <AppBar position="static" style={{backgroundColor: "#673ab7", color: "#ffffff"}}>
           <Toolbar>
             <IconButton
               onClick={this.drawerToggle}
@@ -264,7 +264,7 @@ class Dashboard extends Component {
             <Button
               onClick={this.handleOpen}
               variant="contained"
-              color="primary"
+              style={{backgroundColor: "#673ab7", color: "#ffffff"}}
             >
               Create a new post
             </Button>

@@ -4,7 +4,7 @@ import "../Logo.css";
 class Logo extends Component {
   render() {
     return (
-      <div id="LogoHeader">
+      <div id="LogoHeader" style={{backgroundColor: "#673ab7"}}>
         <div id="LogoTitle">Askisers</div>
       </div>
     );
