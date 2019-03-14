@@ -23,7 +23,6 @@ import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
 
 import Fab from "@material-ui/core/Fab";
-import NavigationIcon from "@material-ui/icons/Navigation";
 import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
@@ -106,11 +105,12 @@ class Dashboard extends Component {
     this.setState({ addAnswer: false, answeredQs: answered });
   };
 
-  handleUpvote = (e) => {
+  handleUpvote = e => {
     var upvoted = this.state.upvotedQs;
     var upquestions = this.state.questions;
-    var currIndex = e.target.value;
+    var currIndex = e.currentTarget.getAttribute("value");
     var currUpvotes = this.state.activeUpvotes;
+    console.log(e.target);
     if(upvoted[currIndex]) {
       upquestions[currIndex]["upvotes"] -= 1;
       if(this.state.isAnswerable && this.state.currKey === currIndex) currUpvotes = upquestions[currIndex]["upvotes"];
@@ -182,11 +182,10 @@ class Dashboard extends Component {
         <div className="question">
           <div className="row">
             <div className="columnA">
-              <IconButton className="upvote" onClick={this.handleUpvote} value={i}>
-                <Add/>
+              <IconButton onClick={this.handleUpvote} value={i}>
+                <Add value={i}/>
               </IconButton>
-              <br />
-              <p>{currQuestion["upvotes"]}</p>
+              <p style={{margin: 0}}>{currQuestion["upvotes"]}</p>
             </div>
             <div
               id="main-question"
@@ -202,7 +201,7 @@ class Dashboard extends Component {
     }
     return sidebar;
   };
-
+  
   viewQuestion = e => {
     var currIndex = e.target.getAttribute("value");
     this.setState({
