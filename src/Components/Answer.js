@@ -16,10 +16,58 @@ class Answer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answerState: false,
-      answered: false,
-      answer: ""
+      upvotes: 0,
+      upvoted: false,
+      downvoted:false,
     };
+  }
+
+  resetUpvotes = () => {
+    this.setState({upvotes: 0});
+  }
+
+  handleUpvote = () => {
+    var upvoteNum = this.state.upvotes;
+    var isUpvoted = this.state.upvoted;
+    var isDownvoted = this.state.downvoted;
+    if(isUpvoted) {
+      upvoteNum -= 1;
+      isUpvoted = false;
+      isDownvoted = false;
+    }
+    else if(isDownvoted) {
+      upvoteNum += 2;
+      isUpvoted = true;
+      isDownvoted = false;
+    }
+    else {
+      upvoteNum += 1;
+      isUpvoted = true;
+      isDownvoted = false;
+    }
+    this.setState({upvotes: upvoteNum, upvoted: isUpvoted, downvoted: isDownvoted});
+  }
+
+  handleDownvote = () => {
+    var upvoteNum = this.state.upvotes;
+    var isUpvoted = this.state.upvoted;
+    var isDownvoted = this.state.downvoted;
+    if(isUpvoted) {
+      upvoteNum -= 2;
+      isUpvoted = false;
+      isDownvoted = true;
+    }
+    else if(isDownvoted) {
+      upvoteNum += 1;
+      isUpvoted = false;
+      isDownvoted = false;
+    }
+    else {
+      upvoteNum -= 1;
+      isUpvoted = false;
+      isDownvoted = true;
+    }
+    this.setState({upvotes: upvoteNum, upvoted: isUpvoted, downvoted: isDownvoted});
   }
 
   render() {
@@ -35,16 +83,16 @@ class Answer extends Component {
               <QuestionAnswer />{" "}
             </Avatar>
           }
-          subheader="0"
+          subheader={this.state.upvotes}
         />
-        <CardContent>
-          {this.props.answer}
+        <CardContent onChange={this.resetUpvotes}>
+          {this.props.answerText}
         </CardContent>
         <CardActions disableActionSpacing>
-        <IconButton>
+        <IconButton onClick={this.handleUpvote}>
             <Add/>
           </IconButton>
-          <IconButton>
+          <IconButton onClick={this.handleDownvote}>
             <Remove/>
           </IconButton>
         </CardActions>
