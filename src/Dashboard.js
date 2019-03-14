@@ -37,9 +37,12 @@ class Dashboard extends Component {
     super(props);
     var data = [];
     var answered = [];
+    var upvoted = [];
+    this.answer = React.createRef();
     for (var i = 0; i < questionInfo.length; i++) {
       data.push("");
       answered.push(false);
+      upvoted.push(false);
     }
     console.log(data);
     this.state = {
@@ -48,6 +51,7 @@ class Dashboard extends Component {
       questions: questionInfo,
       answers: data,
       answeredQs: answered,
+      upvotedQs: upvoted,
       activeQuestion:
         "Hi " +
         this.props.name +
@@ -90,14 +94,35 @@ class Dashboard extends Component {
   };
 
   handleAnsOpen = () => {
-    this.setState({ addAnswer: true });
+    var answered = this.state.answeredQs;
+    answered[this.state.currKey] = false;
+    this.setState({ addAnswer: true, answeredQs: answered });
   };
 
   handleAnsClose = () => {
     var answered = this.state.answeredQs;
     answered[this.state.currKey] = true;
+    this.answer.current.resetUpvotes();
     this.setState({ addAnswer: false, answeredQs: answered });
   };
+
+  handleUpvote = (e) => {
+    var upvoted = this.state.upvotedQs;
+    var upquestions = this.state.questions;
+    var currIndex = e.target.value;
+    var currUpvotes = this.state.activeUpvotes;
+    if(upvoted[currIndex]) {
+      upquestions[currIndex]["upvotes"] -= 1;
+      if(this.state.isAnswerable && this.state.currKey === currIndex) currUpvotes = upquestions[currIndex]["upvotes"];
+      upvoted[currIndex] = false;
+    }
+    else {
+      upquestions[currIndex]["upvotes"] += 1;
+      if(this.state.isAnswerable && this.state.currKey === currIndex) currUpvotes = upquestions[currIndex]["upvotes"];
+      upvoted[currIndex] = true;
+    }
+    this.setState({questions: upquestions, upvotedQs: upvoted, activeUpvotes: currUpvotes});
+  }
 
   setNewQuestion = e => {
     this.setState({
@@ -157,8 +182,8 @@ class Dashboard extends Component {
         <div className="question">
           <div className="row">
             <div className="columnA">
-              <IconButton className="upvote">
-                <Add />
+              <IconButton className="upvote" onClick={this.handleUpvote} value={i}>
+                <Add/>
               </IconButton>
               <br />
               <p>{currQuestion["upvotes"]}</p>
@@ -356,8 +381,9 @@ class Dashboard extends Component {
           </div>
           <br />
           <Answer
+            ref={this.answer}
             answered={this.state.answeredQs[this.state.currKey]}
-            answer={this.state.answers[this.state.currKey]}
+            answerText={this.state.answers[this.state.currKey]}
           />
         </div>
       </div>
