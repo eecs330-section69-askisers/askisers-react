@@ -1,17 +1,26 @@
 [
   {
-    "question": "What is the pythagorean theorem?",
-    "desc": "hello",
-    "upvotes": 13
+    "question": "If I have an isosceles triangle, what do I do with my other triangles?",
+    "desc": "I would prefer an instructor answer.",
+    "upvotes": 7,
+    "time": 0
   },
   {
     "question": "What do I need to learn how to add?",
     "desc": "I've been trying for weeks now!!!",
-    "upvotes": 10
+    "upvotes": 10,
+    "time": 1
   },
   {
-    "question": "If I have an isosceles triangle, what do I do with my other triangles?",
-    "desc": "I would prefer an instructor answer.",
-    "upvotes": 7
+    "question": "Why is the pythagorean theorem useful? When would we use it?",
+    "desc": "I get that if we know the lengths of two sides of a right angled triangle, we can find the length of the third side. (But remember it only works on right angled triangles!). But when would we actually use it? ",
+    "upvotes": 13,
+    "time": 2
+  },
+  {
+    "question": "Wwhat was the percentage of increase for Q6 in the exam?",
+    "desc": "My parents run a warehouse, so we would really appreciate an answer to this question.",
+    "upvotes": 2,
+    "time": 3
   }
 ]

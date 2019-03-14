@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { IconButton, AppBar, Toolbar, Drawer } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
 import { Search, Add } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import "./SideBar.css";
 import "./Logo.css";
-
-import { withStyles } from "@material-ui/core/styles";
 
 import QuestionPreview from "./Components/QuestionPreview";
 import Answer from "./Components/Answer";
@@ -21,6 +21,10 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
+
+import Fab from "@material-ui/core/Fab";
+import NavigationIcon from "@material-ui/icons/Navigation";
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   menuButton: {
@@ -54,22 +58,11 @@ class Dashboard extends Component {
       // State of whether the answer question modal is open or not
       addQuestion: false,
       addAnswer: false,
-      drawerOpen: false
+      drawerOpen: false,
+      numPosts: 4,
+      sorting: "chronological"
     };
   }
-
-  sortByUpvotes = () => {
-    const questionArr = this.state.questions;
-
-    questionArr.sort(function(a, b) {
-      return b.upvotes - a.upvotes;
-    });
-    console.log("SORTED BY UPVOTES!");
-    for (let i = 0; i < questionArr.length; i++) {
-      console.log("Question" + i);
-      console.log(questionArr[i]["upvotes"]);
-    }
-  };
 
   drawerToggle = () => {
     this.setState({ drawerOpen: !this.state.drawerOpen });
@@ -84,12 +77,14 @@ class Dashboard extends Component {
       {
         question: this.state.newQuestion,
         desc: this.state.newDesc,
-        upvotes: 0
+        upvotes: 0,
+        time: this.state.numPosts
       }
     ];
     this.setState({
       questions: this.state.questions.concat(newQ),
-      addQuestion: false
+      addQuestion: false,
+      numPosts: this.state.numPosts + 1
     });
     console.log("New set of questions: " + this.state.questions);
   };
@@ -126,6 +121,27 @@ class Dashboard extends Component {
     });
   };
 
+  sortByUpvotes = () => {
+    console.log("SORTED BY UPVOTES!");
+    const questionArr = this.state.questions;
+
+    questionArr.sort(function(a, b) {
+      return a.upvotes - b.upvotes;
+    });
+    this.setState({ questions: questionArr });
+  };
+
+  sortByChron = () => {
+    console.log("SORTED BY TIME!");
+    const questionArr = this.state.questions;
+
+    questionArr.sort(function(a, b) {
+      return a.time - b.time;
+    });
+
+    this.setState({ questions: questionArr });
+  };
+
   // Generates all of the question previews from the array
   // of questions in the state
   generateQuestions = () => {
@@ -134,7 +150,7 @@ class Dashboard extends Component {
     let sidebar = [];
 
     // Outer loop to create parent
-    for (let i = 0; i < questionArr.length; i++) {
+    for (let i = questionArr.length - 1; i >= 0; i--) {
       let currQuestion = questionArr[i];
       //Create the parent and add the children
       sidebar.push(
@@ -175,7 +191,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    // console.log("NAME OF USER IS: " + this.props.name);
     const { fullScreen } = this.props;
     const { classes } = this.props;
 
@@ -246,7 +261,6 @@ class Dashboard extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
         <AppBar
           position="static"
           style={{ backgroundColor: "#673ab7", color: "#ffffff" }}
@@ -261,11 +275,9 @@ class Dashboard extends Component {
             <Logo />
           </Toolbar>
         </AppBar>
-
         <Drawer open={this.state.drawerOpen} onClose={this.drawerToggle}>
           {sideList}
         </Drawer>
-
         <div id="sidebarsteve" className="Sidebar-Wrapper">
           <div className="topnav">
             <input type="text" placeholder="Find a question or topic.." />
@@ -275,6 +287,16 @@ class Dashboard extends Component {
           </div>
           <br />
           <center>
+            <Fab variant="extended" onClick={this.sortByChron}>
+              <Icon>access_time</Icon>
+              Sort by Date
+            </Fab>
+            <Fab variant="extended" onClick={this.sortByUpvotes}>
+              <Icon>arrow_upward</Icon>
+              Sort by Upvotes
+            </Fab>
+            <br />
+            <br />
             <Button
               onClick={this.handleOpen}
               variant="contained"
