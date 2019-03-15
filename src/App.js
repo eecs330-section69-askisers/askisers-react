@@ -6,14 +6,16 @@ import "./SideBar.css";
 import Dashboard from "./Dashboard";
 
 const SignUpHeader = props => (
-  <div id="signUpHeader" style={{backgroundColor: "#e91e63"}}>
-    <div id="signUpHeaderTitle" style={{color: "#9adcfa"}}>Askisers</div>
+  <div id="signUpHeader" style={{ backgroundColor: "#E71D36" }}>
+    <div id="signUpHeaderTitle" style={{ color: "#FDFFFC" }}>
+      Askisers
+    </div>
   </div>
 );
 
 const FormCheckBox = props => (
-  <div className="signUpRow" style={{padding: "10px"}} >
-    <input style={{border: "#e91e63"}} id={props.id} type="checkbox" />
+  <div className="signUpRow" style={{ padding: "10px" }}>
+    <input style={{ border: "#E71D36" }} id={props.id} type="checkbox" />
     <label htmlFor={props.id}>{props.label}</label>
   </div>
 );
@@ -52,9 +54,16 @@ class App extends Component {
     return (
       <div>
         {activeScreen === "Login" ? (
-          <div>
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "40%",
+              transform: "translate(-50%, -50%)"
+            }}
+          >
             <div id="signUpContainer">
-              <div id="signUpHeader" style={{backgroundColor: "#e91e63"}}>
+              <div id="signUpHeader" style={{ backgroundColor: "#e71d36" }}>
                 <SignUpHeader />
               </div>
               <div className="signUpRow">
@@ -71,7 +80,11 @@ class App extends Component {
                 <input type="password" placeholder="Password" />
               </div>
               <div className="signUpRow">
-                <input onChange={this.updateClass} type="text" placeholder="Class Name" />
+                <input
+                  onChange={this.updateClass}
+                  type="text"
+                  placeholder="Class Name"
+                />
               </div>
               <FormCheckBox
                 id="terms"
@@ -79,13 +92,21 @@ class App extends Component {
               />
             </div>{" "}
             <center>
-              <button onClick={this.openDashboard} id="signUpButton" style={{backgroundColor: "#e91e63", borderRadius: "5px", color: "#9adcfa"}}>
+              <button
+                onClick={this.openDashboard}
+                id="signUpButton"
+                style={{
+                  backgroundColor: "#E71D36",
+                  borderRadius: "5px",
+                  color: "#fdffc"
+                }}
+              >
                 Sign up
               </button>
             </center>
           </div>
         ) : activeScreen === "Dashboard" ? (
-          <Dashboard name={this.state.name} class={this.state.class}/>
+          <Dashboard name={this.state.name} class={this.state.class} />
         ) : null}
       </div>
     );

@@ -13,7 +13,13 @@ class QuestionPreview extends Component {
   render() {
     console.log("Question: " + this.props.question);
     return (
-      <Card style={{backgroundColor:"#81d4f9",boxShadow:"0px 0px 0px #81d4f9", padding:"10px"}}>
+      <Card
+        style={{
+          backgroundColor: "#011627",
+          boxShadow: "0px 0px 0px #81d4f9",
+          padding: "10px"
+        }}
+      >
         <CardHeader
           id="cardHeader"
           avatar={
@@ -25,8 +31,13 @@ class QuestionPreview extends Component {
           title={this.props.question}
           subheader={this.props.votes}
         />
-        <CardContent style={{backgroundColor:"#fdecea", borderRadius: "0px 0px 5px 5px"}}>
-          <Typography component="p" children={this.props.desc}/>
+        <CardContent
+          style={{
+            backgroundColor: "#fdecea",
+            borderRadius: "0px 0px 5px 5px"
+          }}
+        >
+          <Typography component="p" children={this.props.desc} />
         </CardContent>
       </Card>
     );

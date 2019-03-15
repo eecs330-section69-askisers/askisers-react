@@ -1,10 +1,8 @@
 #sidebarsteve {
   width: 25%;
   float: left;
-  height: 100%;
-  overflow:auto;
 
-  border-right: 5px solid #e91e63;
+  border-right: 5px solid #e71d36;
 }
 
 #question-title {
@@ -19,17 +17,17 @@
 }
 body {
   height: 100%;
-  background-color: #81d4f9;
+  background-color: #011627;
 }
 .topnav {
   overflow: hidden;
   background-color: #b3e5fb;
-  border: 3px solid #673AB7;
+  border: 3px solid #673ab7;
   border-radius: 4px;
   width: 300px;
   display: block;
   margin: auto;
-  box-shadow: 0px 0px 2px  3px #9adcfa inset;
+  box-shadow: 0px 0px 2px 3px #9adcfa inset;
 }
 .topnav a {
   float: right;
@@ -40,7 +38,6 @@ body {
   padding: 4px 6px;
   text-decoration: none;
   font-size: 24px;
-
 }
 .topnav a:hover {
   background-color: green;
@@ -78,8 +75,8 @@ body {
   position: static;
   border: 1px solid black;
   border-radius: 5px;
-  width: 95%;
-  box-shadow: 2px 2px  3px #e91e63;;
+  width: 100%;
+  box-shadow: 2px 2px 3px #e91e63;
   /* margin: 0px auto; */
   margin-top: 25px;
   background-color: #fdecea;
@@ -94,7 +91,7 @@ body {
   display: block;
 }
 .columnA {
-  width: 40px;
+  width: 50px;
   height: 100%;
   /*float: left;*/
   border-right: 1px solid black;
@@ -103,7 +100,6 @@ body {
 .columnB {
   flex: 1;
   margin: 5px 10px 5px 10px;
-  font-family: Arial;
 }
 
 .row {

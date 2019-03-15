@@ -111,18 +111,23 @@ class Dashboard extends Component {
     var currIndex = e.currentTarget.getAttribute("value");
     var currUpvotes = this.state.activeUpvotes;
     console.log(e.target);
-    if(upvoted[currIndex]) {
+    if (upvoted[currIndex]) {
       upquestions[currIndex]["upvotes"] -= 1;
-      if(this.state.isAnswerable && this.state.currKey === currIndex) currUpvotes = upquestions[currIndex]["upvotes"];
+      if (this.state.isAnswerable && this.state.currKey === currIndex)
+        currUpvotes = upquestions[currIndex]["upvotes"];
       upvoted[currIndex] = false;
-    }
-    else {
+    } else {
       upquestions[currIndex]["upvotes"] += 1;
-      if(this.state.isAnswerable && this.state.currKey === currIndex) currUpvotes = upquestions[currIndex]["upvotes"];
+      if (this.state.isAnswerable && this.state.currKey === currIndex)
+        currUpvotes = upquestions[currIndex]["upvotes"];
       upvoted[currIndex] = true;
     }
-    this.setState({questions: upquestions, upvotedQs: upvoted, activeUpvotes: currUpvotes});
-  }
+    this.setState({
+      questions: upquestions,
+      upvotedQs: upvoted,
+      activeUpvotes: currUpvotes
+    });
+  };
 
   setNewQuestion = e => {
     this.setState({
@@ -183,9 +188,9 @@ class Dashboard extends Component {
           <div className="row">
             <div className="columnA">
               <IconButton onClick={this.handleUpvote} value={i}>
-                <Add value={i}/>
+                <Add value={i} />
               </IconButton>
-              <p style={{margin: 0}}>{currQuestion["upvotes"]}</p>
+              <p style={{ margin: 0 }}>{currQuestion["upvotes"]}</p>
             </div>
             <div
               id="main-question"
@@ -201,7 +206,7 @@ class Dashboard extends Component {
     }
     return sidebar;
   };
-  
+
   viewQuestion = e => {
     var currIndex = e.target.getAttribute("value");
     this.setState({
@@ -287,7 +292,7 @@ class Dashboard extends Component {
         </Dialog>
         <AppBar
           position="static"
-          style={{ backgroundColor: "#673ab7", color: "#ffffff" }}
+          style={{ backgroundColor: "#e71d36", color: "#ffffff" }}
         >
           <Toolbar>
             <IconButton
@@ -303,12 +308,6 @@ class Dashboard extends Component {
           {sideList}
         </Drawer>
         <div id="sidebarsteve" className="Sidebar-Wrapper">
-          <div className="topnav">
-            <input type="text" placeholder="Find a question or topic.." />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </div>
           <br />
           <center>
             <Fab variant="extended" onClick={this.sortByChron}>
@@ -324,7 +323,7 @@ class Dashboard extends Component {
             <Button
               onClick={this.handleOpen}
               variant="contained"
-              style={{ backgroundColor: "#673ab7", color: "#ffffff" }}
+              style={{ backgroundColor: "#e71d36", color: "#ffffff" }}
             >
               Create a new post
             </Button>
